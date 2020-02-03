@@ -4,6 +4,7 @@ set -euo pipefail
 aws s3 cp --recursive "s3://${RUN_JULES_INPUT}/" .
 # Main run
 HERED="$(cd "$(dirname "$0")" && pwd)"
+mkdir './output'
 "${HERED}/jules.exe" "$@"
 # Save output
 aws s3 cp --recursive './output' "s3://${RUN_JULES_OUTPUT}/"
