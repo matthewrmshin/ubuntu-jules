@@ -1,5 +1,6 @@
 FROM ubuntu AS base
 
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y \
     && apt-get install -y software-properties-common \
     && add-apt-repository universe \
