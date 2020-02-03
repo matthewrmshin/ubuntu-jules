@@ -19,7 +19,8 @@ RUN ln -s "fcm-${FCM_VN}" '/opt/fcm' \
 COPY jules-source /opt/jules
 COPY etc/fcm-make/platform/ubuntu.cfg /opt/jules/etc/fcm-make/platform/ubuntu.cfg
 WORKDIR /opt/jules
-RUN env JULES_PLATFORM=ubuntu fcm make -f './etc/fcm-make/make.cfg' 'build.target=jules.exe'
+RUN env JULES_PLATFORM=ubuntu \
+    fcm make -f './etc/fcm-make/make.cfg' 'build.target=jules.exe'
 
 FROM base
 COPY --from=build /opt/jules/build/bin/jules.exe /usr/local/bin/jules.exe
