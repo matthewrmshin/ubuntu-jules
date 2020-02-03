@@ -1,10 +1,11 @@
 FROM ubuntu AS base
 
 RUN apt-get update -y \
-    && apt install -y software-properties-common \
+    && apt-get install -y software-properties-common \
     && add-apt-repository universe \
     && apt-get update -y \
-    && apt-get install -y awscli bash gfortran libnetcdff-dev
+    && apt-get install -y bash gfortran libnetcdff-dev \
+    && apt-get install -y awscli
 
 FROM base AS build
 RUN apt-get install -y curl perl

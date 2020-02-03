@@ -1,9 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 # Get input
-aws s3 cp "s3://${RUN_JULES_INPUT}/..." '/tmp/jules-run/'
+#aws s3 cp "s3://${RUN_JULES_INPUT}/..." '/tmp/jules-run/'
 # Main run
 HERED="$(cd "$(dirname "$0")" && pwd)"
 "${HERED}/jules.exe" "$@"
 # Save output
-aws s3 cp -pr /tmp/jules-run/output "s3://${RUN_JULES_OUTPUT}/..."
+#aws s3 cp -pr /tmp/jules-run/output "s3://${RUN_JULES_OUTPUT}/..."
