@@ -1,0 +1,19 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    env:
+      TAG: "ubuntu-jules:latest"
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Get JULES
+      run: svn export --username '${{secrets.MOSRS_USER}}' --password '${{secrets.MOSRS_PASS}}' -q https://code.metoffice.gov.uk/svn/jules/main/trunk@15927 jules-source
+    - name: Build the Docker image
+      run: docker build . --file 'Dockerfile' --tag "${TAG}"
