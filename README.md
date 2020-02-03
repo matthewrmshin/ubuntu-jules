@@ -1,6 +1,6 @@
 # ubuntu-jules
 
-JULES with netCDF in a Docker container based on the Ubuntu image.
+JULES with netCDF in a Docker container based on the Ubuntu image, with input/output from/to AWS S3 buckets.
 
 ## Building the container
 
