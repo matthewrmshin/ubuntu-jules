@@ -23,12 +23,14 @@ RUN ./configure --with-zlib=${PREFIX} --prefix=${PREFIX} --enable-hl \
 WORKDIR /opt/netcdf-c-${NC_VN}
 RUN env CPATH=${PREFIX}/include LD_LIBRARY_PATH=${PREFIX}/lib \
     CPPFLAGS=-I${PREFIX}/include LDFLAGS=-L${PREFIX}/lib \
-    ./configure --prefix=${PREFIX} && make install --disable-dap \
+    ./configure --prefix=${PREFIX} --disable-dap \
+    && make install \
     && ${PREFIX}/bin/nc-config --all
 WORKDIR /opt/netcdf-fortran-${NF_VN}
 RUN env CPATH=${PREFIX}/include LD_LIBRARY_PATH=${PREFIX}/lib \
     CPPFLAGS=-I${PREFIX}/include LDFLAGS=-L${PREFIX}/lib \
-    ./configure --prefix=${PREFIX} && make install \
+    ./configure --prefix=${PREFIX} \
+    && make install \
     && ${PREFIX}/bin/nf-config --all
 
 # Install FCM Make
