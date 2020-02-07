@@ -2,7 +2,7 @@ FROM ubuntu AS base
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y \
-    && apt-get install -y curl gfortran make perl
+    && apt-get install -y curl g++ gfortran make perl
 
 # Build and install netCDF libraries.
 ENV ZLIB_VN=1.2.11
